@@ -1,5 +1,6 @@
 def solution(board, moves):
     answer = 0
+    li=[]
     line1,line2,line3,line4,line5=[],[],[],[],[]
     basket=[]
     for i in range(len(board)):
@@ -27,19 +28,12 @@ def solution(board, moves):
         elif i ==4:
             basket.append(line4.pop(0))
         elif i==5:
-            basket.append(line5.pop(0))
-    for i in range(len(basket)-5):
-        if basket[i]==basket[i+1]:
-            basket.pop(i)
-            answer+=1
-            basket.pop(i)
-            answer+=1
-            if basket[i] == basket[i-1]:
-                basket.pop(i)
-                answer+=1
-                basket.pop(i-1)
-                answer+=1
-    return answer,line1,line2,line3,line4,line5,basket
+            basket.append(line5.pop(0)) 
+    if len(basket) > 1:
+        basket.pop()
+        basket.pop()
+        answer+=2
+    return answer,line1,line2,line3,line4,line5,basket,li
 board=[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]
 moves=[1,5,3,5,1,2,1,4]
 print(solution(board,moves))
