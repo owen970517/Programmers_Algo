@@ -29,7 +29,6 @@ def solution(expr):
     for c in expr:
         if c in '({[':
             S.push(c)
-
         elif c in match:
             if S.isEmpty():
                 return False
@@ -37,6 +36,6 @@ def solution(expr):
                 t = S.pop()
                 if t != match[c]:
                     return False
-    return S.isEmpty()
+    return S.isEmpty() , S
 
 print(solution('{([((())()))))])}'))
