@@ -4,18 +4,19 @@ def solution(numbers):
     answer = 0
     li=[]
     per = []
+    number=''
     prime_numbers=[]
     for i in range(len(numbers)):
-        li.append(numbers[i])
+        if numbers[i] not in ['0','1'] :
+            li.append(numbers[i])
     for i in range(1,len(numbers)+1):
         nCr = itertools.permutations(numbers, i)
-        aa=list(set(nCr))
-        per.append(aa)
-    for i in per:
-        for j in range(len(i)):
-            print(j)
+        per.append(list(set(nCr)))
+    for i in range(len(per)):
+        print(per[i])
 
-    return answer,numbers,li,aa,prime_numbers,per
 
-numbers = '011'
+    return answer,numbers,li,per
+
+numbers = '17'
 print(solution(numbers))
