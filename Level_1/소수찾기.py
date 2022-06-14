@@ -13,5 +13,5 @@ def solution(n):
     return answer
 
 
-n=10
+n=17
 print(solution(n))
