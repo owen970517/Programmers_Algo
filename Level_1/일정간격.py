@@ -1,9 +1,11 @@
 def solution(x, n):
     answer = []
+    ran =[]
     if x <0 :
         ran = range(x,n*x-1,x)
     elif x ==0:
-        ran = range(x,n,)
+        for i in range(x,n) :
+            ran.append(0)
     else:
         ran = range(x,n*x+1,x)
     for i in ran:
@@ -11,6 +13,6 @@ def solution(x, n):
 
     return answer
 
-x = 0
-n = 3
+x = 2
+n = 5
 print(solution(x,n))

@@ -1,21 +1,26 @@
 def solution(numbers, target):
     answer = 0
-    p,m=0,0
-    m_li=[numbers[0]]
-    p_li=[numbers[0]]
-    for i in range(len(numbers)):
-        start_m = m_li[i]
-        start_p = p_li[i]
-        for j in range(i,len(numbers)):
-            p =start_p+numbers[j]*-1
-            m= start_m+numbers[j]
-            m_li.append(p)
-            p_li.append(m)
+    m_li=[]
+    p_li=[]
+    start = numbers[0]
+    for i in range(1,len(numbers)):
+        if i ==1 :
+            p = start +numbers[i]
+            m = start - numbers[i]
+            p_li.append(p)
+            m_li.append(m)
+        else :
+            now_p = p_li[-1]
+            now_m = m_li[-1]
+            p = now_p +numbers[i]
+            m = now_m - numbers[i]
+            p_li.append(p)
+            m_li.append(m)
 
-    return answer,m_li,p_li
+    return answer,p_li , m_li
 
-numbers = [1,1,1,1,1]
-target = 3
+numbers = [4,1,2,1]
+target = 4
 print(solution(numbers,target))
 
 
