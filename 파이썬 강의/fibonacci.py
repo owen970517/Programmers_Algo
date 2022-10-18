@@ -21,7 +21,7 @@ def solution(x):
         else :
             now,next = next , now+next
     answer = now
-    return answer
+    return answer % 1234567
 
-x=9
+x=3
 print(solution(x))
