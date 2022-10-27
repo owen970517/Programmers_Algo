@@ -7,7 +7,6 @@ def solution(numbers, target):
             tmp.append(j + i)
             tmp.append(j - i)
         result = tmp
-        print(result)
     for n in result:
         if n == target:
             answer += 1
