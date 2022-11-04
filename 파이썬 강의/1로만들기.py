@@ -1,13 +1,17 @@
-#2, 26
-n,m = map(int,input().split())
-li = list(map(int,input().split()))
-d = [10001] * (m+1)
-d[0] = 0
-for i in range(n) :
-    for j in range(li[i] , m+1) :
-        if d[j-li[i]] != 10001 :
-            d[j] = min(d[j],d[j-li[i]]+1)
-if d[j] == 10001 :
-    print(-1)
-else :
-    print(d[m])
+#26
+n= int(input())
+d = [0] * (30001)
+
+for i in range(2,n+1) :
+    # 조건 4
+    d[i] = d[i-1] +1
+    # 조건 3
+    if i %2 ==0 :
+        d[i] = min(d[i] ,d[i//2] +1)
+    #조건2
+    if i %3 == 0:
+        d[i] = min(d[i],d[i//3]+1)
+    #조건 1        
+    if i % 5 == 0 :
+        d[i] = min(d[i] , d[i//5] +1) 
+print(d[n])
