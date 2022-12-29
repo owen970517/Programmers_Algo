@@ -1,5 +1,4 @@
-import itertools
-
+import itertools 
 def solution(user_id, banned_id) :
     answer= 0
     ban_idx=[]
@@ -8,25 +7,26 @@ def solution(user_id, banned_id) :
         ban_idx.append([i for i, value in enumerate(i) if value == '*'])
     for i in ban_idx :
         for j in user_id :
-            if len(j)-1 < i[0] or len(j)-1 <i[1] :
+            if len(j)-1 < max(i):
                 continue
-            print(j[i[0]],j[i[1]])
-            j=j.replace(j[i[0]],'*',1)
-            j=j.replace(j[i[1]],'*',1)
+            for z in range(len(i)) :
+                j=j.replace(j[i[z]],'*',1)
             for k in banned_id :
                 if j == k :
                     result.append(j)
-    nPr = set(list(itertools.combinations(result,len(banned_id))))
-    answer = len(nPr)
-    
-
+    nPr = list(set(itertools.combinations(result,len(banned_id))))
+    for i in nPr :
+        if list(i) == banned_id :
+            print(i)
+            li= list(set(itertools.product(i,repeat=3)))
+            print(li)
+        
     return answer
 
-print(solution(["frodo", "fradi", "crodo", "abc123", "frodoc"],["fr*d*", "abc1**"]))
+print(solution(["frodo", "fradi", "crodo", "abc123", "frodoc"],["*rodo", "*rodo", "******"]))
 
 
-import re
-import itertools
+
 
 # def solution(user_id, banned_id) :
 #     answer= set()
