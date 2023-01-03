@@ -1,7 +1,6 @@
 def solution(number,limit,power) :
     answer = 0
     li = [] 
-    sum= 0
     for n in range(1,number+1) :
         divisors = []
         for i in range(1, int(n**(1/2)) + 1): 
@@ -15,6 +14,6 @@ def solution(number,limit,power) :
             answer += power
         else :
             answer += i  
-    return answer,li
+    return answer
 
 print(solution(10,3,2))
