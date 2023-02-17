@@ -36,6 +36,6 @@ def solution(expr):
                 t = S.pop()
                 if t != match[c]:
                     return False
-    return S.isEmpty() , S
+    return S.isEmpty()
 
-print(solution('{([((())()))))])}'))
+print(solution('}{'))
