@@ -1,22 +1,36 @@
 n = int(input())
-enter = []
+enter = dict()
 out = []
-li=[]
+li = []
 cnt = 0
 for i in range(n*2) :
     s= input()
     if i < n :
-        enter.append(s)
+        enter[s] = i
     else :
         out.append(s)
-print(enter)
-print(out)
-for i in range(n) :
-    for j in range(i,n) :
-        if out[i] > enter[j] :
-            cnt += 1
-            break
+for i in range(n-1):
+	for j in range(i+1, n):
+		if enter[out[i]] > enter[out[j]] and out[i] not in li:
+			li.append(out[i])
+			break
+print(len(li))
 
-
-
-
+# n = int(input())
+# enter = []
+# out = []
+# cnt = 0
+# for i in range(n*2) :
+#     s= input()
+#     if i < n :
+#         enter.append(s)
+#     else :
+#         out.append(s)
+# for i in range(len(out)) :
+#     if out == enter :
+#         break
+#     cnt += 1
+#     idx = enter.index(out[i])
+#     now = enter.pop(idx)
+#     enter.insert(i,now)
+# print(cnt)
