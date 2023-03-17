@@ -7,18 +7,14 @@ for _ in range(n) :
         if s[i] not in dic :
             dic[s[i]] = 1
         else :
-            if dic[s[i]] > 3:
-                dic[s[i]] -= 1
-                continue
-            else :
-                dic[s[i]] += 1
-            if dic[s[i]] == 3 :
-                if i == len(s)-1 :
+            dic[s[i]] += 1
+            print(dic)
+            if dic[s[i]] == 3:
+                if i == len(s)-1 or s[i] != s[i+1]:
                     ans = False
                     break
-                elif s[i] != s[i+1] :
-                    ans = False
-                    break
+                else :
+                    dic[s[i]] = -1
     if ans :
         print('OK')
     else :
