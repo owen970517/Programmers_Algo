@@ -4,6 +4,9 @@ for i in range(n) :
     s = input()
     li.append(s)
 
-for i in range(len(li)) :
-    for j in range(1,len(li)) :
-        pass
+# print(li)
+# for i in range(len(li)) :
+#     arr = list(li[i])
+#     for j in range(i+1,len(li)) :
+#         arr2 = list(li[j])
+#         if arr[]
