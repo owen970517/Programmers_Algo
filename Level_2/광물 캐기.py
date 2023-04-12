@@ -1,12 +1,10 @@
 def solution(picks , minerals) :
     answer = 0
     all = sum(picks)
-    
-    # 캘 수 있는 광물의 개수
     num_min = all * 5
-    if len(minerals) > num_min: # 주어진 광물이 캘 수 있는 광물 수보다 크면
+    if len(minerals) > num_min:
         minerals = minerals[:num_min]
-    cnt_min = [[0, 0, 0] for x in range(10)] # dia, iron, stone
+    cnt_min = [[0, 0, 0] for x in range(10)] 
     for i in range(len(minerals)):
         if minerals[i] == 'diamond': 
             cnt_min[i//5][0] += 1
@@ -15,7 +13,6 @@ def solution(picks , minerals) :
         else : 
             cnt_min[i//5][2] += 1
     sorted_cnt_min = sorted(cnt_min, reverse=True)
-    print(sorted_cnt_min)
     for mineral in sorted_cnt_min:
         d, i, s = mineral
         for p in range(len(picks)):
