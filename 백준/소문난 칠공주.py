@@ -16,8 +16,6 @@ def dfs(x,y):
             if len(princess) < 7 :
                 dfs(nx,ny)
 
-
-
 li=[]
 dx = [0, 0, 1, -1]
 dy = [1, -1, 0, 0]

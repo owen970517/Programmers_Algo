@@ -32,6 +32,5 @@ for i in range(n) :
         if li[i][j] == 1 and not visited[i][j]:
             size = 1
             dfs(i,j)
-            print(size)
             large = max(large,size)
 print(large)
