@@ -1,3 +1,5 @@
+
+# bfs 풀이
 # def bfs(maps, x, y, value):
 #     if x >= len(maps[0]) or y >= len(maps) or x < 0 or y < 0:
 #         return value
@@ -23,37 +25,45 @@
 
 #     return sorted(answer) if answer else [-1]
 
-def solution(maps) :
+
+# dfs풀이 
+import sys
+sys.setrecursionlimit(10000)
+
+def solution(maps):
+    global totalSum
     answer = []
-    dx = [0, 0, 1, -1]
-    dy = [1, -1, 0, 0]
-    li = []
-    li2 =[]
-    zx = 0
-    for i in range(len(maps)) :
-        for j in range(len(maps[i])) :
-            sum = 0
-            print('현재 값' ,maps[i][j])
-            if maps[i][j] == 'X' :
+    maps = [list(map) for map in maps]
+    totalSum = 0
+
+    def dfs(x,y ):
+        global totalSum
+        maps[x][y] = 'X'
+
+        dx = [0, 0, 1, -1]
+        dy = [1, -1, 0, 0]
+
+        for i in range(4):
+            nx = x+ dx[i]
+            ny = y+ dy[i]
+
+            if nx<=-1 or nx>=len(maps) or ny<=-1 or ny>=len(maps[0]) or maps[nx][ny] == 'X':
                 continue
-            else :
-                sum += int(maps[i][j])
-            for k in range(4) :
-                ni = i + dx[k]
-                nj = j + dy[k]
-                if ni < 0 or ni >= len(maps) or nj < 0 or nj >= len(maps[i]) :
-                    continue
-                if maps[ni][nj] == 'X' :
-                    continue
-                else :
-                    print('상하좌우 값' , maps[ni][nj])
-                    sum += int(maps[ni][nj])  
-                    maps[ni] = maps[ni].replace(maps[ni][nj] , 'X')
-            li.append(sum)
-            zx+=sum
-            print('전체 값',zx)
-    if zx == 0 :
-        return -1 
+            totalSum += int(maps[nx][ny])
+            dfs(nx, ny)
+
+    for i in range(len(maps)):
+        for j in range(len(maps[0])):
+            if maps[i][j] != 'X' : 
+                totalSum = int(maps[i][j])
+                dfs(i, j)
+                answer.append(totalSum)
+
+    if len(answer) == 0:
+        answer.append(-1)
+    else:
+        answer.sort()
     return answer
+
 
 print(solution(["X591X","X1X5X","X231X", "1XXX1"]))

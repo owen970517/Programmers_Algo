@@ -33,8 +33,8 @@ for i in range(n) :
         wolf,sheep =0,0
         if graph[i][j] == 'v' or graph[i][j] == 'o' :
             dfs(i,j)
-        if wolf < sheep :
-            total_sheep += sheep
-        else :
+        if wolf >= sheep :
             total_wolf += wolf
+        else :
+            total_sheep += sheep
 print(total_sheep,total_wolf)

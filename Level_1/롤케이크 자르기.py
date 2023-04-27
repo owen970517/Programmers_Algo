@@ -1,5 +1,4 @@
 from collections import Counter
-
 def solution(topping) :
     answer = 0
     dic = Counter(topping)
@@ -11,6 +10,6 @@ def solution(topping) :
             dic.pop(i)
         if len(dic) == len(set_dic) :
             answer += 1
-    return answer,dic,set_dic
+    return answer
 
 print(solution([1,2,1,3,1,4,1,2]))
