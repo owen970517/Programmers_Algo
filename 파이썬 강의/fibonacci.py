@@ -11,17 +11,29 @@
 
 # 반복적 버전 
 def solution(x):
-    answer = 0
+    answer = []
     now,next= 0,1
-    for _ in range(x):
-        if x == 0:
-            answer=0
-        elif x == 1:
-            answer =1
-        else :
-            now,next = next , now+next
+    li = []
+    while 1 :
+        if now+next > 12345 :
+            break
+        for _ in range(x):
+            if x == 0:
+                answer=0
+            elif x == 1:
+                answer =1
+            else :
+                now,next = next , now+next
+                li.append(next)
+    now = 12345
+    for i in range(len(li)) :
+        if li[::-1][i] <= now :
+            answer.append(li[::-1][i])
+            now -= li[::-1][i]
+    print(answer)
+
     answer = now
     return answer % 1234567
 
-x=3
+x=2
 print(solution(x))
