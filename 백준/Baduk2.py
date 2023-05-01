@@ -28,3 +28,4 @@ for i in range(n) :
     for j in range(m) :
         if li[i][j] == 2 :
             dfs(i,j,cnt)
+            print(cnt)
