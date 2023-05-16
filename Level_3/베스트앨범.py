@@ -1,16 +1,27 @@
+# 내가 푼 풀이
 def solution(genres,plays) :
-    answer = 0
+    answer = []
     dic ={}
-    arr = []
+    li = []
     for i in range(len(genres)) :
-        arr.append([genres[i],plays[i],i])
-    arr = sorted(arr, key=lambda x: (x[0], -x[1], x[2])) 
-    for i in arr :
-        if i[0] not in dic :
-            arr.remove(i)
-            dic[i[0]] = i[1]
-    dic = sorted(dic.items(),key=lambda x : (-x[1]))
-        
-    return answer,dic,arr
+        if genres[i] not in dic :
+            dic[genres[i]] = [plays[i]]
+        else :
+            dic[genres[i]].append(plays[i])
+    dic = dict(sorted(dic.items() , key=lambda x:sum(x[1]) , reverse=True))
+    print(dic)
+    for i in dic :
+        dic[i].sort(reverse=True)
+        if len(dic[i]) < 2 :
+            li += dic[i]
+        else :
+            li += dic[i][:2]
+    print(dic)
+    for i in li :
+        if plays.index(i) in answer :
+            answer.append(plays.index(i , answer[-1]+1,len(plays)))
+        else :
+            answer.append(plays.index(i))
+    return answer
 
-print(solution(["classic", "pop", "classic", "classic", "pop"],[500, 600, 150, 800, 2500]))
+print(solution(["classic", "pop", 'trot',"classic", "classic", "pop",'classic','trot'],[500, 600,200 ,150, 800, 2500,500,200]))

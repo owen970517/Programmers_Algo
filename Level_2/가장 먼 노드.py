@@ -18,7 +18,6 @@ def solution(n,edge) :
                     print(visited)
                     visited[i] = visited[v] + 1
                     print(visited)
-    # 0번 노드가 없으니 1번 노드부터 탐색
     visited[1] = 1
     bfs(graph, 1, visited)
     answer = visited.count(max(visited))

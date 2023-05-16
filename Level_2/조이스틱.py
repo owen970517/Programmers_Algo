@@ -1,14 +1,12 @@
 def solution(name):
     answer = 0
+    print(name.find('A'))
+    now = 'A' * len(name)
+    last = 'Z'
+    for idx,k in enumerate(name) :
+        print(k)
+        answer += min(ord(k) - ord('A'), ord('Z') - ord(k) + 1)
 
-    n = 'A'
-    for i in name :
-        print(i)
-        ascii = ord(n)
-        for j in range(1,26) :
-            ascii +=1
-            if chr(ascii) == i :
-                answer +=j
     return answer
 
 name = 'JAN'
