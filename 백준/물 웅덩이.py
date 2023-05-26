@@ -1,5 +1,3 @@
-from math import ceil
-
 n,l = map(int,input().split())
 li =[]
 length = 0
