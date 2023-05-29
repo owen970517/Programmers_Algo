@@ -1,3 +1,5 @@
+import sys
+input =sys.stdin.readline
 def dfs(L,idx) :
     global ans
     if L == n//2 :
