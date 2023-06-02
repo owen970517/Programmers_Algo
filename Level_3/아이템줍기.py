@@ -2,7 +2,7 @@ from collections import deque
 
 def solution(rectangle, characterX, characterY, itemX, itemY):
     answer = 0
-    field = [[-1] * 102 for i in range(102)]
+    field = [[-1] * 102 for _ in range(102)]
     dx = [-1, 1, 0, 0]
     dy = [0, 0, -1, 1]
     for i in rectangle :
@@ -15,7 +15,7 @@ def solution(rectangle, characterX, characterY, itemX, itemY):
                     field[i][j] = 1
     q = deque()
     q.append([characterX * 2, characterY * 2])
-    visited = [[1] * 102 for i in range(102)]
+    visited = [[1] * 102 for _ in range(102)]
     while q:
         x, y = q.popleft()
         if x == itemX * 2 and y == itemY * 2:

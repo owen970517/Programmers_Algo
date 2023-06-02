@@ -1,19 +1,20 @@
-def list_2d(li) :
-    for i in li :
-        print(i)
-
 n,m = map(int,input().split())
 A,B = [],[]
 for i in range(n*2) :
-    s = list(input())
+    s = list(map(int,input()))
     if i<n :
         A.append(s)
     else :
         B.append(s)
-print(A)
-new=[]
-for i in range(n-3) :
-    for j in range(m-3) :
-        new_li =[row[j:j+3] for row in A[i:i+3]]
-        new.append(new_li)
-    print(new)
+cnt = 0
+for i in range(n-2) :
+    for j in range(m-2) :
+        if A[i][j] != B[i][j] :
+            for k in range(i,i+3) :
+                for l in range(j,j+3) :
+                    A[k][l] = 1-A[k][l]
+            cnt += 1
+if A == B :
+    print(cnt)
+else :
+    print(-1)
