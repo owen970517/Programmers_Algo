@@ -8,7 +8,7 @@ def solution(n) :
         for j in range(len(array[i])-1) :
             array[i][j] = array[i-1][0] +1
 
-            print(array[i])
+        print(array)
 
     return answer
 
