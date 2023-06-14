@@ -35,7 +35,6 @@ for i in range(1,11) : # 1 자리에서 10자리의 자연수
         nCr.sort(reverse=True)                    
         li.append(int("".join(map(str, nCr))))
 li.sort()
-print(li)
 
 if n >= len(li) :
     print(-1)
