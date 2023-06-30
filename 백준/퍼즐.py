@@ -38,5 +38,3 @@ for i in range(3) :
         if s[j] == 0 :
             sx,sy = i,j
 print(bfs(sx,sy,0))
-
-
