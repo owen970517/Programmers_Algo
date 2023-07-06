@@ -7,6 +7,7 @@ def solution(rectangle, characterX, characterY, itemX, itemY):
     dy = [0, 0, -1, 1]
     for i in rectangle :
         x1,y1,x2,y2 = map(lambda x : x*2,i)
+        print(x1,y1,x2,y2)
         for i in range(x1, x2+1):
             for j in range(y1, y2+1):
                 if x1 < i < x2 and y1 < j < y2:

@@ -4,19 +4,19 @@ polyomino_B = 'BB'
 board = input()
 board = board.split('.')
 ans = []
+now = ''
 for i in board :
     result = ''
+    print(board)
     now = len(i)
-    if i != '' :
+    if i != '':
         print(now)
         if now % 2 == 1 :
             ans.append(-1)
             break
-        if now // 4 != 0:
+        if now // 4 :
             result += (now // 4)* polyomino_A 
-            print(now//4)
             now -= now//4 * 4
-            print(now)
         if now // 2 != 0:
             result += (now//2)*polyomino_B
             now -= now//2 * 2
