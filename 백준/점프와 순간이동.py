@@ -4,7 +4,7 @@ from collections import deque
 def solution(n) :
     answer = 0
     while 1 :
-        if n <= 0  :
+        if n != 0  :
             break
         else :
             if n % 2 == 0 :

@@ -8,6 +8,7 @@ def solution(n,edge) :
         graph[i[1]].append(i[0])
     print(graph)
     visited = [0] * (n+1)
+    visited[1] = 1
     def bfs(graph, v, visited):
         q = deque([v])
         while q :
@@ -18,7 +19,6 @@ def solution(n,edge) :
                     print(visited)
                     visited[i] = visited[v] + 1
                     print(visited)
-    visited[1] = 1
     bfs(graph, 1, visited)
     answer = visited.count(max(visited))
     return answer

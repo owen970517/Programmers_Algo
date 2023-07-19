@@ -3,7 +3,6 @@ from cmath import sqrt
 
 def solution(begin,end) :
     answer = []
-    print(sqrt(end))
     for i in range(begin,end+1) :
         for j in range(2,int(i**0.5)+1) :
             print(j)
