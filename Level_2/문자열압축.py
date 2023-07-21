@@ -1,19 +1,27 @@
 def solution(s):
-    answer = 0
-    li=[]
-    cnt=0
-    steps = 2
-    lst = [s[i:i+steps] for i in range(0, len(s), steps)]
-    first = lst[0]
-    for i in range(1,len(lst)):
-        if first == lst[i]:
-            cnt +=1
-           
+    answer = int(1e9)
+    for i in range(1,len(s)+1) :
+        lst = [s[j:j+i] for j in range(0, len(s), i)]
+        new = ''
+        cnt = 1
+        for k in range(len(lst)-1) :
+            if lst[k] == lst[k+1] :
+                cnt += 1
+            else :
+                if cnt > 1 :
+                    new += f'{cnt}{lst[k]}'
+                    cnt = 1
+                else :
+                    new += lst[k]
+        if cnt > 1 :
+            new += f'{cnt}{lst[-1]}'
+        else :
+            new += lst[-1]
+            
+        answer = min(answer,len(new))
+    return answer
 
-
-    return answer,lst 
-
-s = "aabbaccc"
+s = "xababcdcdababcdcd"
 print(solution(s))
 
 
