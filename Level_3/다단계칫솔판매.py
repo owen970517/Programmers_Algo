@@ -1,26 +1,47 @@
 def solution(enroll, referral, seller, amount):
     # 정답 배열 설정
     answer = [0]*len(enroll)
-    idx_list={}
+    dic={}
     for idx,name in enumerate(enroll):
-        idx_list[name]=idx #idx_list = {"john":0, ....}
-    # 이제 인덱스가 있기 때문에 인덱스로 부모 조회가 가능하다.
-    # 트리를 아예 새로 짜는 게 아니라 부모를 조회하는 방법만 알면 된다.
+        dic[name]=idx 
     for idx,name in enumerate(seller):
         price=100*amount[idx]
-        answer[idx_list[name]]+=price #일단 price를 온전히 더함
+        answer[dic[name]]+=price 
+    center = 0
+    li=[]
     for i in seller :
-        print(idx_list[i])
-        if referral[idx_list[i]] != '-' :
-            divied = answer[idx_list[i]] // 10
-            print(divied)
-            answer[idx_list[i]] -= divied
-            answer[idx_list[referral[idx_list[i]]]] += divied
+        if referral[dic[i]] != '-' :
+            divied = answer[dic[i]] // 10
+            answer[dic[i]] -= divied
+            answer[dic[referral[dic[i]]]] += divied
+            if referral[dic[i]] not in seller :
+                li.append(dic[referral[dic[i]]])
         else :
-            answer[idx_list[i]] -= answer[idx_list[i]] // 10
-    return answer , idx_list
+            answer[dic[i]] -= answer[dic[i]] // 10
+            center += answer[dic[i]] // 10
+    print(li)
+    print(answer[li[0]],answer[li[1]])
+    return answer  
 
 print(solution(["john", "mary", "edward", "sam", "emily", "jaimie", "tod", "young"],
 ["-", "-", "mary", "edward", "mary", "mary", "jaimie", "edward"],
 ["young", "john", "tod", "emily", "mary"],
 [12, 4, 2, 5, 10]))
+
+
+
+# def solution(enroll, referral, seller, amount):
+#     answer = [0]*len(enroll)
+#     dic={}
+#     for idx,name in enumerate(enroll):
+#         dic[name]=idx 
+
+#     for s, a in zip(seller, amount):
+#         profit = a * 100
+        
+#         while s != '-' and profit > 0:
+#             idx = dic[s]
+#             answer[idx] += profit - profit//10
+#             profit //= 10
+#             s = referral[idx]
+#     return answer  
