@@ -1,28 +1,55 @@
 from collections import deque
 
 def solution(order) :
-    Q = deque()
+    answer = 0
+    main_belt = deque()
     for i in range(len(order)) :
-        Q.append(i+1)
-    truck = deque()
-    cnt = 0
-    while Q : 
-        if order[cnt] != Q[0] :
-            if truck and order[cnt] == truck[-1] :
-                cnt += 1
-                truck.pop()
+        main_belt.append(i+1)
+    sub_belt = deque()
+    truck = []
+    while main_belt : 
+        if order[0] != main_belt[0] :
+            if sub_belt and order[0] == sub_belt[-1] :
+                order.pop(0)
+                truck.append(sub_belt.pop())
             else :
-                truck.append(Q.popleft())
+                sub_belt.append(main_belt.popleft())
         else :
-            cnt +=1
-            Q.popleft()
-    while truck :
-        if order[cnt] == truck[-1] :
-            cnt +=1 
-            truck.pop()
+            truck.append(main_belt.popleft())
+            order.pop(0)
+    while sub_belt :
+        if order[0] == sub_belt[-1] :
+            order.pop(0)
+            truck.append(sub_belt.pop())
         else :
             break
-    answer = cnt 
-    return answer,truck
+    answer = len(truck)
+    return answer
+# from collections import deque
 
-print(solution([3,5,4,2,1]))
+# def solution(order) :
+#     answer = 0
+#     main_belt = deque()
+#     sub_belt = deque()
+#     truck = []
+#     for i in range(len(order)) :
+#         main_belt.append(i+1)
+#     while main_belt :
+#         if order[0] != main_belt[0] :
+#             if sub_belt and order[0] == sub_belt[-1] :
+#                 truck.append(sub_belt.pop())
+#                 order.pop(0)
+#             else :
+#                 sub_belt.append(main_belt.popleft())
+#         else :
+#             truck.append(main_belt.popleft())
+#             order.pop(0)
+#     while sub_belt :
+#         if order[0] == sub_belt[-1] :
+#             truck.append(sub_belt.pop())
+#             order.pop(0)
+#         else :
+#             break
+#     answer = len(truck)
+#     return answer
+print(solution([2, 1, 4, 3, 6, 5, 8, 7, 10, 9]))

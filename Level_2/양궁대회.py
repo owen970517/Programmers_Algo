@@ -1,34 +1,27 @@
-from itertools import product
-
+from itertools import combinations_with_replacement
 
 def solution(n,info) :
-    answer = []
+    answer = [-1]
     li = [i for i in range(11)]
-    arr = [0]*11
-    score = [10,9,8,7,6,5,4,3,2,1,0]
-    ryon = 0
-    apeach = 0
-    now = list(product(li , repeat=n))
+    now = list(combinations_with_replacement(li, n))
     max_dis = 0
     for i in now :
-        arr = [0]*11
-        win = False
+        score = [0] * 11
         for j in i :
-            arr[j] += 1
-        for k in range(len(arr)) :
-            if info[k] == arr[k] or info[k] > arr[k] :
-                apeach += score[k]
-            elif info[k] < arr[k] :
-                ryon += score[k]
-        if ryon > apeach :
-            win = True
-            dis = ryon-apeach
-            max_dis = max(max_dis,dis)
-            answer = arr
-    if win :
-        print(answer)
-    else :
-        print([-1])
+            score[10-j] += 1
+        apeach,ryan = 0,0
+        for k in range(11) :
+            if info[k] == score[k] == 0 :
+                continue
+            if info[k] >= score[k] :
+                apeach += 10-k
+            else :
+                ryan += 10-k
+        if ryan > apeach :
+            dis = ryan-apeach
+            if max_dis < dis :
+                max_dis = dis
+                answer = score
     return answer
 
 print(solution(5,[2,1,1,1,0,0,0,0,0,0,0]))
