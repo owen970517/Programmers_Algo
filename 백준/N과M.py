@@ -14,18 +14,14 @@
 # 백트래킹 사용한 방법
 n,m = map(int,input().split())
 ans = []
-visited = [False] *(n+1)
 
 def backtracking(num) :
-    if num == m :
-        print(' '.join(map(str,ans)))
+    if len(ans) == m :
+        print(*ans)
         return 
-    for i in range(1,n+1) :
-        if visited[i] == False :
-            visited[i] = True
-            ans.append(i)
-            backtracking(num+1)
-            visited[i] = False
-            ans.pop()
-            
-backtracking(0)
+    for i in range(num,n+1) :
+        ans.append(i)
+        backtracking(i)
+        ans.pop()       
+backtracking(1)
+
