@@ -12,7 +12,6 @@ def bfs(x,y,cnt) :
                 if li[nx][ny] == 'L' :
                     visited[nx][ny] = True
                     q.append((nx,ny,cnt+1))
-
     return cnt
 n,m = map(int,input().split())
 li = []
