@@ -1,18 +1,19 @@
-n,k = map(int,input().split())
-li = [int(input()) for _ in range(n)]
-start = 1
-end = max(li)
+n = int(input())
+k = int(input())
+
+start,end = 0,k
 
 while start<=end :
     mid = (start+end)//2
     cnt = 0
-    for i in li :
-        s = i // mid
-        cnt += s
 
-    if cnt >= k :
-        start = mid + 1
-    else :
-        end = mid - 1
+    for i in range(1,n+1) :
+        cnt += min(mid//i,n)
     
-print(end)
+    if cnt >= k :
+        answer = mid
+        end = mid-1
+    else :
+        start = mid + 1
+
+print(answer)
