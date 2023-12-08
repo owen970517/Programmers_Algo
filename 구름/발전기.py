@@ -1,6 +1,5 @@
 from collections import deque
 
-
 n = int(input())
 li = []
 dx = [-1,1,0,0]
@@ -23,8 +22,6 @@ def bfs(x,y) :
             if li[nx][ny] == 1 :
                 q.append((nx,ny))
                 li[nx][ny] = 2
-                
-print(li)
 
 for i in range(n) :
     for j in range(n) :
