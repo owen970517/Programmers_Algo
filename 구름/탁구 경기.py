@@ -12,4 +12,4 @@ for i in range(n) :
         p += 1
 res = ''
 res = str(d) + c + str(p)
-print(res)
+
