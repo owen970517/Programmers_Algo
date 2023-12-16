@@ -10,9 +10,6 @@ def k(now) :
             s += i
     li.append(s)
     return li
-
-a,b = map(str,input().split())
-print(a,b)
 # s = ''
 # li = []
 # for i in a :
@@ -26,5 +23,5 @@ print(a,b)
 print(k(a))
 print(k(b))
 
-print(eval(a))
-print(eval(b))
+a,b = map(str,input().split())
+print(max(eval(a),eval(b)))
