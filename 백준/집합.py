@@ -1,10 +1,9 @@
-# 내가 푼 풀이 시간이 3784ms 걸림 
+# 미리 1~20까지의 집합을 만들어놓고 all시 할당한 부분이 틀렸었음 
 
 import sys
 
 n = int(sys.stdin.readline())
 li =set()
-all = set([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
 for i in range(n) :
     s = sys.stdin.readline().strip().split()
     if s[0] == 'add' :
@@ -22,7 +21,6 @@ for i in range(n) :
         else :
             li.add(int(s[1]))
     elif s[0] == 'all' :
-        li = all
-        print(li)
+        li = set([i for i in range(1, 21)])
     elif s[0] == 'empty' :
         li = set()
