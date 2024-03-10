@@ -1,34 +1,36 @@
-import sys
-import copy
-sys.setrecursionlimit(1000000)
+from collections import deque
 
-def dfs(x,y):
-    li_copy[x][y] = 0
-    for i in range(4) :
-        nx = x+dx[i]
-        ny = y+dy[i]
-        if nx<=-1 or nx>=len(li) or ny<=-1 or ny>=len(li[0]) :
-            continue
-        else :
-            if li_copy[nx][ny] > k :
-                dfs(nx,ny)
+def bfs(x,y) :
+    q = deque()
+    q.append((x,y))
+    visited[x][y] = True
+    while q :
+        x,y = q.popleft()
+        for i in range(4) :
+            nx,ny = x+dx[i],y+dy[i]
+            if 0<=nx<n and 0<=ny<n and not visited[nx][ny] and li[nx][ny] > m :
+                q.append((nx,ny))
+                visited[nx][ny] = True
+
 n = int(input())
 li = []
-dx = [-1,1,0,0]
-dy = [0,0,-1,1]
-maxNum =0
-for i in range(n) :
-    s = list(map(int,input().split()))
-    maxNum = max(maxNum,max(s))
-    li.append(s)
+maxRain =0
 ans = 0
-for k in range(maxNum) :
+dx = [0,0,1,-1]
+dy = [1,-1,0,0]
+for i in range(n) :
+    now = list(map(int,input().split()))    
+    maxRain = max(maxRain,max(now))
+    li.append(now)
+
+for m in range(maxRain) :
+    visited = [[False] * n for _ in range(n)]
     cnt = 0
-    li_copy = copy.deepcopy(li)
     for i in range(n) :
         for j in range(n) :
-            if li_copy[i][j] > k :
-                dfs(i,j)
+            if li[i][j] > m and not visited[i][j]:
+                bfs(i,j)
                 cnt += 1
     ans = max(ans,cnt)
+
 print(ans)

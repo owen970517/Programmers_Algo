@@ -5,7 +5,6 @@ def dfs(v):
     visited[v] = True
     for i in graph[v]:
         if not visited[i]:
-            visited[i] = True
             dfs(i)
 
 n,m = map(int,input().split())
